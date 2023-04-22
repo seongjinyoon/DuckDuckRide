@@ -3,7 +3,7 @@ import { useNavigation } from '@react-navigation/native';
 import React from 'react'
 
 const NavOptions = () => {
-    // const navigation = useNavigation();
+    const navigation = useNavigation();
     const findRide = () => {
         // Handle button 1 press here
     };
@@ -15,8 +15,9 @@ const NavOptions = () => {
     return (
         <View style={{ flexDirection: 'row' }}>
             <TouchableOpacity
+                onPress={() => navigation.navigate('Setup')}
                 style={{ marginRight: 50, marginLeft: 30, ...styles.container }}
-                onPress={findRide}
+            // onPress={findRide}
             >
                 <View>
                     <Image
@@ -29,8 +30,9 @@ const NavOptions = () => {
             </TouchableOpacity>
 
             <TouchableOpacity
+                onPress={() => navigation.navigate('Setup')}
                 style={{ ...styles.container }}
-                onPress={shareRide}
+            // onPress={shareRide}
             >
                 <View>
                     <Image
