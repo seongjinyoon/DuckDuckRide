@@ -2,8 +2,9 @@ import React from 'react';
 import { SafeAreaView, StyleSheet, Text, View, Image } from 'react-native';
 import NavOptions from '../NavOptions/NavOptions';
 import TripInfo from '../TripInfo/TripInfo';
+import Counter from '../Counter/Counter';
 
-const Setup = () => {
+const SetupDriver = () => {
     return (
         <SafeAreaView>
             <View style={{ padding: 5 }}>
@@ -14,13 +15,14 @@ const Setup = () => {
                     }
                 />
                 <TripInfo />
+                <Counter />
             </View>
 
         </SafeAreaView>
     )
 }
 
-export default Setup;
+export default SetupDriver;
 
 const styles = StyleSheet.create({
     // text: {

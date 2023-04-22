@@ -30,7 +30,7 @@ const NavOptions = () => {
             </TouchableOpacity>
 
             <TouchableOpacity
-                onPress={() => navigation.navigate('Setup')}
+                onPress={() => navigation.navigate('SetupDriver')}
                 style={{ ...styles.container }}
             // onPress={shareRide}
             >

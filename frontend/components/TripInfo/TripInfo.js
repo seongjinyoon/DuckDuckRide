@@ -3,7 +3,6 @@ import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { GOOGLE_MAPS_APIKEY } from "@env";
-import DatePick from '../DatePick/DatePick';
 
 const TripInfo = () => {
     const navigation = useNavigation();
@@ -60,7 +59,6 @@ const TripInfo = () => {
                 nearbyPlacesAPI='GooglePlacesSearch'
                 debounce={400}
             />
-            <DatePick />
             <TouchableOpacity
                 onPress={() => navigation.navigate('RiderList')}
                 style={{ ...styles.container }}
