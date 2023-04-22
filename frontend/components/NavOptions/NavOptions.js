@@ -1,7 +1,9 @@
-import { FlatList, StyleSheet, Button, Text, View, TouchableOpacity, Image } from 'react-native'
+import { FlatList, StyleSheet, Button, Text, View, TouchableOpacity, Image } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import React from 'react'
 
 const NavOptions = () => {
+    // const navigation = useNavigation();
     const findRide = () => {
         // Handle button 1 press here
     };
@@ -13,25 +15,30 @@ const NavOptions = () => {
     return (
         <View style={{ flexDirection: 'row' }}>
             <TouchableOpacity
-                style={{ width: 70, height: 70, marginRight: 60, marginLeft: 20 }}
+                style={{ marginRight: 50, marginLeft: 30, ...styles.container }}
                 onPress={findRide}
             >
-                <Image
-                    source={require('../../assets/findRideIcon.png')}
-                    style={{ width: 100, height: 100 }}
-                />
-                <Text>Find Ride</Text>
+                <View>
+                    <Image
+                        source={require('../../assets/findRideIcon.png')}
+                        style={styles.img}
+                    />
+                    <Text style={styles.text}>Find Ride</Text>
+                </View>
+
             </TouchableOpacity>
 
             <TouchableOpacity
-                style={{ width: 70, height: 70 }}
+                style={{ ...styles.container }}
                 onPress={shareRide}
             >
-                <Image
-                    source={require('../../assets/shareRideIcon.png')}
-                    style={{ width: 100, height: 100 }}
-                />
-                <Text>Share Ride</Text>
+                <View>
+                    <Image
+                        source={require('../../assets/shareRideIcon.png')}
+                        style={styles.img}
+                    />
+                    <Text style={styles.text}>Share Ride</Text>
+                </View>
             </TouchableOpacity>
         </View>
     );
@@ -39,4 +46,24 @@ const NavOptions = () => {
 
 export default NavOptions
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    container: {
+        padding: 2,
+        paddingLeft: 6,
+        paddingBottom: 8,
+        paddingTop: 4,
+        backgroundColor: '#edf2f7',
+        width: 100,
+        height: 100
+    },
+
+    text: {
+        marginTop: 8,
+        // fontWeight: 600,
+    },
+
+    img: {
+        width: 100,
+        height: 100
+    }
+})
