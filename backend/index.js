@@ -1,6 +1,10 @@
-// Create React App
+/**
+ * Imports:
+ *      1. express
+ *      2. cors
+ */
 const express = require("express")
-const app = express()
+const cors = require("cors")
 
 /**
  * Routers:
@@ -11,14 +15,21 @@ const app = express()
 const UserRouter = require("./routes/UserRouter")
 const RideRouter = require("./routes/RideRouter")
 
+// express app:
+const app = express()
+
 /**
  * Setups:
  *      1. read json files
+ *      2. cors solve cross region
+ *      3. use database config
  */
 app.use(express.json())
+app.use(cors())
+require("./config/db.config")
 
 
-app.use("/api/login", UserRouter)
+app.use("/api/user", UserRouter)
 app.use("/api/ride", RideRouter)
 
 app.get("/",(req,res)=>{

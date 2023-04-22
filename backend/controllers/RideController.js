@@ -1,5 +1,5 @@
 const express = require("express")
-const RideService = require("../services/RideService")
+//const RideService = require("../services/RideService")
 
 const RideController = {
     getRide:(req,res)=>{
@@ -14,6 +14,7 @@ const RideController = {
         }
         res.send(data)
     }
+    
 }
 
 
