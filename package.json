@@ -1,0 +1,15 @@
+{
+  "name": "your-app",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "frontend": "cd frontend && npm start",
+    "backend": "cd backend && npm start",
+    "start": "concurrently \"npm run frontend\" \"npm run backend\""
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "concurrently": "^6.5.1"
+  }
+}
+
