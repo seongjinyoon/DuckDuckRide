@@ -6,6 +6,8 @@ import { GOOGLE_MAPS_APIKEY } from "@env";
 import DatePick from '../DatePick/DatePick';
 
 const TripInfo = () => {
+    const navigation = useNavigation();
+
     return (
         <View style={{ flexDirection: 'column' }}>
             <GooglePlacesAutocomplete
@@ -13,13 +15,19 @@ const TripInfo = () => {
                 styles={{
                     container: {
                         flex: 0,
-                        width: '100 %'
-
+                        width: '100%',
                     },
                     textInput: {
                         fontSize: 18,
                     }
                 }}
+                onPress={(data, details = null) => {
+                    console.log(data);
+                    console.log(details);
+                }}
+                fetchDetails={true}
+                minLength={2}
+                enablePoweredByContainer={false}
                 query={{
                     key: GOOGLE_MAPS_APIKEY,
                     language: 'en'
@@ -32,23 +40,29 @@ const TripInfo = () => {
                 styles={{
                     container: {
                         flex: 0,
-                        width: '100 %'
-
+                        width: '100%',
                     },
                     textInput: {
                         fontSize: 18,
                     }
                 }}
-                // query={{
-                //     key: GOOGLE_MAPS_APIKEY,
-                //     language: 'en'
-                // }}
+                onPress={(data, details = null) => {
+                    console.log(data);
+                    console.log(details);
+                }}
+                fetchDetails={true}
+                minLength={2}
+                enablePoweredByContainer={false}
+                query={{
+                    key: GOOGLE_MAPS_APIKEY,
+                    language: 'en'
+                }}
                 nearbyPlacesAPI='GooglePlacesSearch'
                 debounce={400}
             />
             <DatePick />
             <TouchableOpacity
-                // onPress={() => navigation.navigate('Setup')}
+                onPress={() => navigation.navigate('RiderList')}
                 style={{ ...styles.container }}
             >
                 <View>

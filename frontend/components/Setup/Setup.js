@@ -13,7 +13,6 @@ const Mainpage = () => {
                         require('../../assets/logo.jpeg')
                     }
                 />
-                <Text>Hello world</Text>
                 <TripInfo />
             </View>
 

@@ -6,12 +6,14 @@ const Main = () => {
     return (
         <SafeAreaView>
             <View style={{ padding: 5 }}>
+                {/* LOGO */}
                 <Image
                     style={{ height: 50, width: 50, resizeMode: 'contain' }}
                     source={
                         require('../../assets/logo.jpeg')
                     }
                 />
+                {/* RIDE OPTIONS */}
                 <NavOptions />
             </View>
         </SafeAreaView>
