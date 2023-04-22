@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
 
     text: {
         marginTop: 8,
-        // fontWeight: 600,
+        fontWeight: 600,
     },
 
     img: {
