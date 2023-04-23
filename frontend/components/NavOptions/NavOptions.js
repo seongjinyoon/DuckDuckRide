@@ -16,7 +16,7 @@ const NavOptions = ({ userId }) => {
         <View style={{ flexDirection: 'row' }}>
             <TouchableOpacity
                 onPress={() => navigation.navigate('Setup', { userId })}
-                style={{ marginRight: 50, marginLeft: 30, ...styles.container }}
+                style={{ marginRight: 90, marginLeft: 30, ...styles.container }}
             // onPress={findRide}
             >
                 <View>
@@ -61,12 +61,12 @@ const styles = StyleSheet.create({
 
     text: {
         marginTop: 8,
-        marginLeft: 14,
+        marginLeft: 23,
         fontWeight: 600,
     },
 
     img: {
-        width: 100,
-        height: 100
+        width: 150,
+        height: 150
     }
 })

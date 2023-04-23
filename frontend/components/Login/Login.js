@@ -60,16 +60,23 @@ const Login = () => {
                 keyboardType="numeric"
                 secureTextEntry={true}
             />
-            <TouchableOpacity
-                onPress={async () => {
-                    await createUser(text, number);
-                }}
-                style={{ ...styles.container }}
-            >
-                <View>
-                    <Text style={styles.text}>Login</Text>
-                </View>
-            </TouchableOpacity>
+            <View style={{ ...styles.container2 }}>
+                <TouchableOpacity
+                    onPress={async () => {
+                        await createUser(text, number);
+                    }}
+                >
+                    <View>
+                        <Text style={styles.text}>Login</Text>
+                    </View>
+                </TouchableOpacity>
+            </View>
+            <Image
+                style={{ height: '100%', width: '100%', resizeMode: 'contain', flex: 1, justifyContent: 'center', alignContent: 'center' }}
+                source={
+                    require('../../assets/background.png')
+                }
+            />
         </SafeAreaView>
     );
 };
@@ -77,7 +84,15 @@ const Login = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff'
+        backgroundColor: '#fff',
+        zIndex: 999,
+
+    },
+    container2: {
+        // backgroundColor: '#fff',
+        zIndex: 999,
+        backgroundColor: 'white',
+        borderRadius: 10,
     },
     input: {
         height: 40,
@@ -87,6 +102,7 @@ const styles = StyleSheet.create({
     },
     text: {
         paddingLeft: 15,
+        fontSize: 24
     }
 });
 

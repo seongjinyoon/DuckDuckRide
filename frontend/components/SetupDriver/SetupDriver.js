@@ -23,6 +23,12 @@ const SetupDriver = () => {
                 <TripInfo role='driver' userId={userId} />
                 <Counter />
             </View>
+            <Image
+                style={{ height: '100%', width: '100%', resizeMode: 'contain', flex: 1, justifyContent: 'center', alignContent: 'center' }}
+                source={
+                    require('../../assets/background.png')
+                }
+            />
         </SafeAreaView>
     )
 }
