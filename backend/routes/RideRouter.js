@@ -10,6 +10,7 @@ const RideController = require("../controllers/RideController")
 
 router.get("/",async (req,res)=>{
     console.log(req.query)
+    // Show Ride Distances base on given query
     if(req.query.ridedistance==='true'){
         let data = await RideModel.find({"_id":req.query.id})
         if(req.query.index===undefined){
@@ -45,6 +46,8 @@ router.get("/",async (req,res)=>{
         }
     }
 
+
+    // Show nearest ride base on start and end position
     else if(req.query.findstart==="true"){
         let data = await RideModel.find()
         let dataList = []
@@ -77,9 +80,8 @@ router.get("/",async (req,res)=>{
         console.log(dataList)
         res.send(dataList)
     }
-    else if(req.query.sort===true){
 
-    }
+    // Return all data
     else{
         console.log("Here")
         let data = await RideModel.find()
@@ -105,6 +107,24 @@ router.post("/",(req,res)=>{
         driverId,customersId,stLat,stLon,enLat,enLon,date
     })
     res.send({ok:1})
+})
+
+router.put("/",(req,res)=>{
+    console.log(req.body)
+    let {id,passengerId,stLat,stLon,enLat,enLon} = req.body
+    RideModel.updateOne({_id:id},{
+        $push:{
+            passengersId:passengerId,
+            stLat:stLat,
+            stLon:stLon,
+            enLat:enLat,
+            enLon:enLon,
+        }
+    }).then(()=>{
+        console.log("put finished")
+        res.send({ok:1})
+    } )
+    
 })
 
 module.exports = router
