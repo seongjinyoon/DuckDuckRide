@@ -13,7 +13,7 @@ const SetupDriver = () => {
     const navigation = useNavigation();
     return (
         <SafeAreaView>
-            <View style={{ padding: 5 }}>
+            <View style={styles.container}>
                 <Image
                     style={{ height: 50, width: 50, resizeMode: 'contain' }}
                     source={
@@ -31,7 +31,8 @@ const SetupDriver = () => {
 export default SetupDriver;
 
 const styles = StyleSheet.create({
-    // text: {
-    //     color: 'blue',
-    // },
-})
+    container: {
+        padding: 5,
+        backgroundColor: '#fff', // add this to set the background color to white
+    },
+});

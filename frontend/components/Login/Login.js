@@ -10,8 +10,8 @@ const Login = () => {
     const [number, onChangeNumber] = React.useState('');
 
     const createUser = async (userName, passWord) => {
-        try{
-            const response= await fetch('http://127.0.0.1:8000/api/user',{
+        try {
+            const response = await fetch('http://127.0.0.1:8000/api/user', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -22,24 +22,31 @@ const Login = () => {
                 }),
             });
             const json = await response.json();
-            if (json){
+            if (json) {
                 if (!json.ok) console.error('Server Error!');
-                else{
-                    navigation.navigate('Main', {userId:json.id})
+                else {
+                    navigation.navigate('Main', { userId: json.id })
                 }
             }
             else {
                 console.error('Empty response body');
             }
         }
-        catch (error){
+        catch (error) {
             console.error(error);
 
         }
     }
 
     return (
-        <SafeAreaView>
+        <SafeAreaView style={styles.container}>
+            {/* LOGO */}
+            <Image
+                style={{ height: 50, width: 50, resizeMode: 'contain' }}
+                source={
+                    require('../../assets/logo.jpeg')
+                }
+            />
             <TextInput
                 style={styles.input}
                 onChangeText={onChangeText}
@@ -55,7 +62,7 @@ const Login = () => {
             />
             <TouchableOpacity
                 onPress={async () => {
-                    await createUser(text,number);
+                    await createUser(text, number);
                 }}
                 style={{ ...styles.container }}
             >
@@ -68,6 +75,10 @@ const Login = () => {
 };
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#fff'
+    },
     input: {
         height: 40,
         margin: 12,

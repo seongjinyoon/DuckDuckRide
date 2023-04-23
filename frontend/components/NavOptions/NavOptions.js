@@ -15,7 +15,7 @@ const NavOptions = ({ userId }) => {
     return (
         <View style={{ flexDirection: 'row' }}>
             <TouchableOpacity
-                onPress={() => navigation.navigate('Setup', {userId})}
+                onPress={() => navigation.navigate('Setup', { userId })}
                 style={{ marginRight: 50, marginLeft: 30, ...styles.container }}
             // onPress={findRide}
             >
@@ -30,7 +30,7 @@ const NavOptions = ({ userId }) => {
             </TouchableOpacity>
 
             <TouchableOpacity
-                onPress={() => navigation.navigate('SetupDriver', {userId})}
+                onPress={() => navigation.navigate('SetupDriver', { userId })}
                 style={{ ...styles.container }}
             // onPress={shareRide}
             >
@@ -51,16 +51,17 @@ export default NavOptions
 const styles = StyleSheet.create({
     container: {
         padding: 2,
-        paddingLeft: 6,
+        // paddingLeft: 6,
         paddingBottom: 8,
         paddingTop: 4,
-        backgroundColor: '#edf2f7',
+        // backgroundColor: '#edf2f7',
         width: 100,
         height: 100
     },
 
     text: {
         marginTop: 8,
+        marginLeft: 14,
         fontWeight: 600,
     },
 

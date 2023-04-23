@@ -10,10 +10,10 @@ const RideInfoC = ({ route }) => {
         <SafeAreaView>
             <View style>
                 {/* <Text>This is the RideInfo-Customer page</Text> */}
-                <View style={tw`h-70%`}>
+                <View style={tw`h-1/2`}>
                     <Map />
                 </View >
-                <View>
+                <View style={tw`h-1/2`}>
                     <Card />
                 </View>
 
