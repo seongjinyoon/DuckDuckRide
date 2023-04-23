@@ -41,7 +41,7 @@ const RideInfoC = () => {
             <View style={styles.container}>
                 {/* <Text>This is the RideInfo-Customer page</Text> */}
                 <View style={tw`h-1/2`}>
-                    <Map geoList={geoList} numPpl={geoList[0].length()}/>
+                    <Map geoList={geoList} numPpl={geoList[0].length}/>
                 </View >
                 <View style={tw`h-1/2`}>
                     <Card />
