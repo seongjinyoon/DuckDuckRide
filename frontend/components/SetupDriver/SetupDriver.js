@@ -17,7 +17,7 @@ const SetupDriver = () => {
                         require('../../assets/logo.jpeg')
                     }
                 />
-                <TripInfo />
+                <TripInfo role='driver' />
                 <Counter />
             </View>
 

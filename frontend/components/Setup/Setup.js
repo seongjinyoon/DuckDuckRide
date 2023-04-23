@@ -5,7 +5,6 @@ import TripInfo from '../TripInfo/TripInfo';
 
 
 const Setup = () => {
-
     return (
         <SafeAreaView>
             <View style={{ padding: 5 }}>
@@ -15,7 +14,7 @@ const Setup = () => {
                         require('../../assets/logo.jpeg')
                     }
                 />
-                <TripInfo />
+                <TripInfo role='passenger'/>
 
             </View>
 

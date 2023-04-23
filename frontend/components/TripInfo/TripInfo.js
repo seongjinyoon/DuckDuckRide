@@ -1,37 +1,79 @@
 import { FlatList, StyleSheet, Button, Text, View, TouchableOpacity, Image } from 'react-native';
 
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { GOOGLE_MAPS_APIKEY } from "@env";
 import { useNavigation } from '@react-navigation/native';
 
 const TripInfo = () => {
-    const [data, setData] = useState(null);
+    const { role, userId } = props;
+
+    // const [userId, setUserId] = useState(null);
     const [startData, setStartData] = useState(null);
     const [endData, setEndData] = useState(null);
 
     const navigation = useNavigation();
+
+    useEffect(()=>{
+        requestInfo();
+    },[]);
+    const requestInfo = async () => {
+        const response = await fetch('http://localhost:8000/api/user',{
+            method: ''
+
+        });
+    }
+
     const createRide = async () => {
         try {
-            const response = await fetch('http://127.0.0.1:8000',{
+            const response = await fetch('http://127.0.0.1:8000/api/ride',{
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
               },
               body: JSON.stringify({
+                driverId: userId,
+                passengersId: [],
                 ...startData,
                 ...endData,
               }),
-      
             });
+
             const json = await response.json();
             if (json){
-              setData(json);
+              if (!json.ok) console.error('Server Error!');
             }
             else {
               console.error('Empty response body');
             }
         } catch (error) {
+            console.error(error);
+        }
+    }
+
+    const addRide = async () => {
+        try{
+            const response = await fetch('http://127.0.0.1:8000/api/ride',{
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body:JSON.stringify({
+                    id: userId,
+                    passengersId: [],
+                    ...startData,
+                    ...endData,
+                }), 
+            });
+            const json = await response.json();
+            if (json){
+              if (!json.ok) console.error('Server Error!');
+            }
+            else {
+              console.error('Empty response body');
+            }
+        }
+        catch (error){
             console.error(error);
         }
     }
@@ -97,7 +139,8 @@ const TripInfo = () => {
 
             <TouchableOpacity
                 onPress={async () =>{
-                    await createRide();
+                    if (role === 'driver') await createRide();
+                    else if (role === 'passenger') await addRide();
                     navigation.navigate('RiderList')
                 }}
                 style={{ ...styles.container }}
