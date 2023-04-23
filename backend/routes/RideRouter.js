@@ -121,10 +121,8 @@ router.put("/",(req,res)=>{
             enLon:enLon,
         }
     }).then(()=>{
-        console.log("put finished")
         res.send({ok:1})
     }).catch(()=>{
-        console.log("Cannot update data")
         res.send({ok:0})
     })
     
