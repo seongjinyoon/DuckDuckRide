@@ -1,18 +1,29 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { FlatList, SafeAreaView, StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import NavOptions from '../NavOptions/NavOptions';
 import { useNavigation, useRoute } from '@react-navigation/native';
 
-const renderItem = ({ item }) => (
-    <View style={styles.itemContainer}>
-        <Text style={styles.itemText}>{item.driverId}</Text>
-    </View>
-);
+
 
 const RiderList = () => {
     const route = useRoute();
     const { riderListData } = route.params;
+    const [selectedItem, setSelectedItem] = useState(null);
     const navigation = useNavigation();
+
+    const renderItem = ({ item }) => (
+        <TouchableOpacity
+            onPress={() => {
+                setSelectedItem(item);
+                navigation.navigate('RideInfo-Customer', { selectedItem: item });
+            }}
+        >
+        <View style={styles.itemContainer}>
+            <Text style={styles.itemText}>{`${item._id}`}</Text>
+        </View>
+        </TouchableOpacity>
+    );
+
     return (
         <SafeAreaView>
             <View style={{ padding: 5 }}>
@@ -21,13 +32,6 @@ const RiderList = () => {
                     renderItem={renderItem} // Pass the renderItem function
                     keyExtractor={(item) => item._id} // Provide a unique key for each item
                 />
-                <TouchableOpacity
-                    onPress={() => navigation.navigate('RideInfo-Customer')}
-                    style={{ ...styles.container2 }}>
-                    <View>
-                        <Text style={styles.text}>Continue</Text>
-                    </View>
-                </TouchableOpacity>
             </View>
         </SafeAreaView>
     )

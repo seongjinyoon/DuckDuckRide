@@ -1,11 +1,15 @@
 import React from 'react';
+import {useRoute} from '@react-navigation/native';
 import { SafeAreaView, StyleSheet, Text, View, Image } from 'react-native';
 import Map from '../Map/Map';
 import Card from '../Card/Card';
 import MapView, { Marker } from 'react-native-maps';
 import tw from 'twrnc';
 
-const RideInfoC = ({ route }) => {
+const RideInfoC = () => {
+    const route = useRoute();
+    const { selectedItem } = route.params;
+    console.log(selectedItem);
     return (
         <SafeAreaView>
             <View style>
