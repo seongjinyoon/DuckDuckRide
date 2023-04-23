@@ -31,7 +31,7 @@ const TripInfo = ({role, userId}) => {
             });
             const json = await response.json();
             if (json) {
-                navigation.navigate("RiderList", { riderListData: json });
+                navigation.navigate("RiderList", { riderListData: json, stAddr: startData.stAddr, enAddr: endData.enAddr });
             } else {
                 console.error("Failed to fetch rider list data");
             }
@@ -59,6 +59,7 @@ const TripInfo = ({role, userId}) => {
             const json = await response.json();
             if (json){
               if (!json.ok) console.error('Server Error!');
+              else navigation.navigate("RideInfo-Customer", {selectedItem:null});
             }
             else {
               console.error('Empty response body');
@@ -111,7 +112,8 @@ const TripInfo = ({role, userId}) => {
                 onPress={(data, details = null) => {
                     setStartData({
                         stLat: details.geometry.location.lat,
-                        stLon: details.geometry.location.lng
+                        stLon: details.geometry.location.lng,
+                        stAddr: data.description
                     });
                 }}
                 fetchDetails={true}
@@ -137,9 +139,11 @@ const TripInfo = ({role, userId}) => {
                     }
                 }}
                 onPress={(data, details = null) => {
+                    
                     setEndData({
                         enLat: details.geometry.location.lat,
                         enLon: details.geometry.location.lng,
+                        enAddr: data.description
                     });
                 }}
                 fetchDetails={true}
@@ -157,8 +161,10 @@ const TripInfo = ({role, userId}) => {
             <TouchableOpacity
                 onPress={async () =>{
                     if (role === 'driver') await createRide();
-                    else if (role === 'passenger') await addRide();
-                    await requestRiderListInfo();
+                    else if (role === 'passenger'){
+                        await addRide();
+                        await requestRiderListInfo();
+                    }
                     
                 }}
                 style={{ ...styles.container }}

@@ -9,7 +9,7 @@ import tw from 'twrnc';
 const RideInfoC = () => {
     const route = useRoute();
     const { selectedItem } = route.params;
-    console.log(selectedItem);
+    console.log(selectedItem); // null or selected item
     return (
         <SafeAreaView>
             <View style={styles.container}>

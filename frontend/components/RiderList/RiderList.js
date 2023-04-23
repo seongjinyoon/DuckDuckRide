@@ -7,19 +7,18 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 
 const RiderList = () => {
     const route = useRoute();
-    const { riderListData } = route.params;
-    const [selectedItem, setSelectedItem] = useState(null);
+    const { riderListData, stAddr, enAddr } = route.params;
     const navigation = useNavigation();
+    console.log(`${stAddr} & ${enAddr}`)
 
     const renderItem = ({ item }) => (
         <TouchableOpacity
             onPress={() => {
-                setSelectedItem(item);
                 navigation.navigate('RideInfo-Customer', { selectedItem: item });
             }}
         >
         <View style={styles.itemContainer}>
-            <Text style={styles.itemText}>{`${item._id}`}</Text>
+            <Text style={styles.itemText}>{`${stAddr}  ->  ${enAddr}`}</Text>
         </View>
         </TouchableOpacity>
     );
@@ -46,7 +45,7 @@ const styles = StyleSheet.create({
         paddingTop: 20,
     },
     itemContainer: {
-        backgroundColor: '#f9c2ff',
+        backgroundColor: '#ded6d5',
         padding: 20,
         marginVertical: 8,
         marginHorizontal: 16,
