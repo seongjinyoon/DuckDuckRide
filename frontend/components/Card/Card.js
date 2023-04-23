@@ -46,7 +46,10 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        marginBottom: 50,
+        flex: 1,
+        // paddingBottom: '50%',
+        // marginBottom: '50%',
+        // marginBottom: 50,
     },
     button: {
         width: 100,
