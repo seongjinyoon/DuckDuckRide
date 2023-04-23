@@ -24,6 +24,7 @@ const TripInfo = () => {
                     console.log(details);
                 }}
                 fetchDetails={true}
+                returnKeyType={'search'}
                 minLength={2}
                 enablePoweredByContainer={false}
                 query={{
@@ -49,6 +50,7 @@ const TripInfo = () => {
                     console.log(details);
                 }}
                 fetchDetails={true}
+                returnKeyType={'search'}
                 minLength={2}
                 enablePoweredByContainer={false}
                 query={{
