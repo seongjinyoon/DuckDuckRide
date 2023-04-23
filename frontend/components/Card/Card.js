@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, TouchableOpacity, Text } from 'react-native';
+import { StyleSheet, View, TouchableOpacity, Text, Image } from 'react-native';
 
 const Card = () => {
     return (
@@ -8,15 +8,17 @@ const Card = () => {
             <View style={styles.container}>
                 <View style={styles.buttonContainer}>
                     <TouchableOpacity style={styles.button}>
-                        <Text>1</Text>
+                        <Image source={require('../../assets/one.png')} style={styles.image} />
+                        <Text>Driver</Text>
                     </TouchableOpacity>
                     <View style={styles.spacer} />
                     <TouchableOpacity style={styles.button}>
-                        <Text>2</Text>
+                        <Image source={require('../../assets/two.png')} style={styles.image} />
+                        <Text>Vehicle</Text>
                     </TouchableOpacity>
                     <View style={styles.spacer} />
                     <TouchableOpacity style={styles.button}>
-                        <Text>3</Text>
+                        <Text>3/4</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -50,12 +52,25 @@ const styles = StyleSheet.create({
         width: 100,
         height: 100,
         borderRadius: 50,
-        backgroundColor: 'gray',
+        backgroundColor: 'white',
+        borderColor: 'white',
+        // backgroundColor: '#ded6d5',
         justifyContent: 'center',
         alignItems: 'center',
+        borderWidth: 1,
+        // borderColor: '#bab0af',
     },
     spacer: {
         width: 40,
+    },
+    image: {
+        width: 100,
+        height: 100,
+        borderRadius: 50,
+        // resizeMode: 'contain',
+        // width: 50,
+        // height: 50,
+        marginBottom: 5,
     },
 });
 

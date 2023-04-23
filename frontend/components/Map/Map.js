@@ -32,6 +32,7 @@ const Map = () => {
                 apikey={GOOGLE_MAPS_APIKEY}
                 strokeWidth={3}
                 strokeColor='black'
+                waypoints={[{ latitude: 33.685910, longitude: -117.824720 }]}
             />
 
             <Marker

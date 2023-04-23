@@ -1,5 +1,5 @@
 import React from 'react';
-import {useRoute} from '@react-navigation/native';
+import { useRoute } from '@react-navigation/native';
 import { SafeAreaView, StyleSheet, Text, View, Image } from 'react-native';
 import Map from '../Map/Map';
 import Card from '../Card/Card';
@@ -12,7 +12,7 @@ const RideInfoC = () => {
     console.log(selectedItem);
     return (
         <SafeAreaView>
-            <View style>
+            <View style={styles.container}>
                 {/* <Text>This is the RideInfo-Customer page</Text> */}
                 <View style={tw`h-1/2`}>
                     <Map />
@@ -30,10 +30,12 @@ const RideInfoC = () => {
 export default RideInfoC;
 
 const styles = StyleSheet.create({
-    // container: {
-    //     position: 'absolute',
-    //     top: '50%',
-    //     width: '100 %',
-    // transform: 'translateY(-50 %)'
-    // }
+    container: {
+        // flex: 1,
+        backgroundColor: 'white',
+        //     position: 'absolute',
+        //     top: '50%',
+        //     width: '100 %',
+        // transform: 'translateY(-50 %)'
+    }
 })

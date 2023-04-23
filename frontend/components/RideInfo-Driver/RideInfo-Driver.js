@@ -1,14 +1,18 @@
 import React from 'react';
+import { useRoute } from '@react-navigation/native';
 import { SafeAreaView, StyleSheet, Text, View, Image } from 'react-native';
 import Map from '../Map/Map';
 import Card from '../Card/Card';
 import MapView, { Marker } from 'react-native-maps';
 import tw from 'twrnc';
 
-const RideInfoC = ({ route }) => {
+const RideInfoD = () => {
+    const route = useRoute();
+    const { selectedItem } = route.params;
+    console.log(selectedItem);
     return (
         <SafeAreaView>
-            <View style>
+            <View style={styles.container}>
                 {/* <Text>This is the RideInfo-Customer page</Text> */}
                 <View style={tw`h-1/2`}>
                     <Map />
@@ -23,13 +27,15 @@ const RideInfoC = ({ route }) => {
     )
 }
 
-export default RideInfoC;
+export default RideInfoD;
 
 const styles = StyleSheet.create({
-    // container: {
-    //     position: 'absolute',
-    //     top: '50%',
-    //     width: '100 %',
-    // transform: 'translateY(-50 %)'
-    // }
+    container: {
+        // flex: 1,
+        backgroundColor: 'white',
+        //     position: 'absolute',
+        //     top: '50%',
+        //     width: '100 %',
+        // transform: 'translateY(-50 %)'
+    }
 })
