@@ -40,9 +40,9 @@ app.get("/",(req,res)=>{
 })
 
 
-app.listen(20627,()=>{
+app.listen(8000,()=>{
     console.log("Server started")
-    console.log("http://127.0.0.1:20627/")
+    console.log("http://127.0.0.1:8000/")
 })
 
 

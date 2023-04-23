@@ -1,10 +1,10 @@
 {
-  "name": "your-app",
-  "version": "0.0.1",
+  "name": "Duck Duck Ride",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
-    "frontend": "cd frontend && npm start",
-    "backend": "cd backend && npm start",
+    "frontend": "cd frontend && npm i && npx expo start --ios",
+    "backend": "cd backend && npm i && node index.js",
     "start": "concurrently \"npm run frontend\" \"npm run backend\""
   },
   "dependencies": {},
