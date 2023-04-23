@@ -13,14 +13,9 @@ const RiderList = ({ route }) => {
         <SafeAreaView>
             <View style={{ padding: 5 }}>
                 <Text>This is the RiderList page</Text>
-                {/* <Text>{lat1}</Text>
-                <Text>{lon1}</Text>
-                <Text>{lat2}</Text>
-                <Text>{lon2}</Text> */}
                 <TouchableOpacity
                     onPress={() => navigation.navigate('RideInfo-Customer')}
-                    style={{ ...styles.container }}
-                >
+                    style={{ ...styles.container }}>
                     <View>
                         <Text style={styles.text}>Continue</Text>
                     </View>

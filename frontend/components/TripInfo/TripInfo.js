@@ -12,16 +12,29 @@ const TripInfo = ({role, userId}) => {
     const [endData, setEndData] = useState(null);
 
     const navigation = useNavigation();
+    const requestRiderListInfo = async () => {
+        try{
+            const queryParams = new URLSearchParams({
+                findstart:true,
+                stLat:startData.stLat,
+                stLon:startData.stLon,
+                enLat:endData.enLat,
+                enLon:endData.enLon,
+                near:10
+            });
 
-    // useEffect(()=>{
-    //     requestInfo();
-    // },[]);
-    // const requestInfo = async () => {
-    //     const response = await fetch('http://localhost:8000/api/user',{
-    //         method: ''
-
-    //     });
-    // }
+            const response = await fetch(`http://localhost:8000/api/ride?${queryParams.toString()}`,{
+                method: 'GET',
+                headers:{
+                    'Content-Type': 'application/json',
+                }
+            });
+            const json = await response.json();
+            navigation.navigate('RiderList', {riderListData:json})
+        } catch (error){
+            console.log(error);
+        }
+    }
 
     const createRide = async () => {
         try {
@@ -140,7 +153,8 @@ const TripInfo = ({role, userId}) => {
                 onPress={async () =>{
                     if (role === 'driver') await createRide();
                     else if (role === 'passenger') await addRide();
-                    navigation.navigate('RiderList')
+                    await requestRiderListInfo();
+                    
                 }}
                 style={{ ...styles.container }}
             >
