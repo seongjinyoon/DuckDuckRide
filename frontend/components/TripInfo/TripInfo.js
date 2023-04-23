@@ -5,8 +5,7 @@ import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplet
 import { GOOGLE_MAPS_APIKEY } from "@env";
 import { useNavigation } from '@react-navigation/native';
 
-const TripInfo = () => {
-    const { role, userId } = props;
+const TripInfo = ({role, userId}) => {
 
     // const [userId, setUserId] = useState(null);
     const [startData, setStartData] = useState(null);
@@ -14,15 +13,15 @@ const TripInfo = () => {
 
     const navigation = useNavigation();
 
-    useEffect(()=>{
-        requestInfo();
-    },[]);
-    const requestInfo = async () => {
-        const response = await fetch('http://localhost:8000/api/user',{
-            method: ''
+    // useEffect(()=>{
+    //     requestInfo();
+    // },[]);
+    // const requestInfo = async () => {
+    //     const response = await fetch('http://localhost:8000/api/user',{
+    //         method: ''
 
-        });
-    }
+    //     });
+    // }
 
     const createRide = async () => {
         try {

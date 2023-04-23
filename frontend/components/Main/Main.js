@@ -1,8 +1,12 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet, Text, View, Image } from 'react-native';
+import { useRoute } from '@react-navigation/native';
 import NavOptions from '../NavOptions/NavOptions';
 
 const Main = () => {
+    const route = useRoute();
+    const { userId } = route.params;
+    // console.log(`Main page: ${userId}`);
     return (
         <SafeAreaView>
             <View style={{ padding: 5 }}>
@@ -14,7 +18,7 @@ const Main = () => {
                     }
                 />
                 {/* RIDE OPTIONS */}
-                <NavOptions />
+                <NavOptions userId={userId}/>
             </View>
         </SafeAreaView>
     )

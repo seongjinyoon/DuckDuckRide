@@ -1,10 +1,13 @@
 import React from 'react';
+import { useRoute } from '@react-navigation/native';
 import { SafeAreaView, StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import NavOptions from '../NavOptions/NavOptions';
 import TripInfo from '../TripInfo/TripInfo';
 
 
 const Setup = () => {
+    const route = useRoute();
+    const { userId } = route.params;
     return (
         <SafeAreaView>
             <View style={{ padding: 5 }}>
@@ -14,7 +17,7 @@ const Setup = () => {
                         require('../../assets/logo.jpeg')
                     }
                 />
-                <TripInfo role='passenger'/>
+                <TripInfo role='passenger' userId={userId}/>
 
             </View>
 

@@ -9,6 +9,35 @@ const Login = () => {
     const [text, onChangeText] = React.useState('Username');
     const [number, onChangeNumber] = React.useState('');
 
+    const createUser = async (userName, passWord) => {
+        try{
+            const response= await fetch('http://127.0.0.1:8000/api/user',{
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    username: userName,
+                    password: passWord
+                }),
+            });
+            const json = await response.json();
+            if (json){
+                if (!json.ok) console.error('Server Error!');
+                else{
+                    navigation.navigate('Main', {userId:json.id})
+                }
+            }
+            else {
+                console.error('Empty response body');
+            }
+        }
+        catch (error){
+            console.error(error);
+
+        }
+    }
+
     return (
         <SafeAreaView>
             <TextInput
@@ -26,7 +55,7 @@ const Login = () => {
             />
             <TouchableOpacity
                 onPress={async () => {
-                    navigation.navigate('Main')
+                    await createUser(text,number);
                 }}
                 style={{ ...styles.container }}
             >

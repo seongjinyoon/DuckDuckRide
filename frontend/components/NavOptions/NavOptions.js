@@ -2,7 +2,7 @@ import { FlatList, StyleSheet, Button, Text, View, TouchableOpacity, Image } fro
 import { useNavigation } from '@react-navigation/native';
 import React from 'react'
 
-const NavOptions = () => {
+const NavOptions = ({ userId }) => {
     const navigation = useNavigation();
     const findRide = () => {
         // Handle button 1 press here
@@ -15,7 +15,7 @@ const NavOptions = () => {
     return (
         <View style={{ flexDirection: 'row' }}>
             <TouchableOpacity
-                onPress={() => navigation.navigate('Setup')}
+                onPress={() => navigation.navigate('Setup', {userId})}
                 style={{ marginRight: 50, marginLeft: 30, ...styles.container }}
             // onPress={findRide}
             >
@@ -30,7 +30,7 @@ const NavOptions = () => {
             </TouchableOpacity>
 
             <TouchableOpacity
-                onPress={() => navigation.navigate('SetupDriver')}
+                onPress={() => navigation.navigate('SetupDriver', {userId})}
                 style={{ ...styles.container }}
             // onPress={shareRide}
             >

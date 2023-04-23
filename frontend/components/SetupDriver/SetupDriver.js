@@ -1,4 +1,5 @@
 import React from 'react';
+import { useRoute } from '@react-navigation/native';
 import { SafeAreaView, StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import NavOptions from '../NavOptions/NavOptions';
 import TripInfo from '../TripInfo/TripInfo';
@@ -7,6 +8,8 @@ import { useNavigation } from '@react-navigation/native';
 
 
 const SetupDriver = () => {
+    const route = useRoute();
+    const { userId } = route.params;
     const navigation = useNavigation();
     return (
         <SafeAreaView>
@@ -17,7 +20,7 @@ const SetupDriver = () => {
                         require('../../assets/logo.jpeg')
                     }
                 />
-                <TripInfo role='driver' />
+                <TripInfo role='driver' userId={userId} />
                 <Counter />
             </View>
 
