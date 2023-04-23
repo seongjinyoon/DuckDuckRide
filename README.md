@@ -13,6 +13,11 @@ Through this project, we gained valuable experience in front-end development, wo
 ## What's next for Duck Duck Ride
 We plan to enhance Duck Duck Ride by implementing a reservation system for rides on specific dates, as well as introducing a chat feature that allows drivers and riders to communicate more effectively. By continuing to develop and improve our app, we hope to make long-distance travel more accessible, affordable, and sustainable for everyone.
 highlight how it reduces cost for travelers with no easy access to transport such as university students
+## Installation
+`cd DuckDuckRide`
+`npm i`
+`npm start`
+
 
 ## Contributors
 Seongjin Yoon, Yue Wu, Jialuo Hu
