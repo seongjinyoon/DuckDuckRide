@@ -19,13 +19,13 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name='Login' component={Login} options={{ headerShown: false, }} />
-        <Stack.Screen name='Main' component={Main} options={{ headerShown: false, }} />
-        <Stack.Screen name='Setup' component={Setup} options={{ headerShown: false, }} />
-        <Stack.Screen name='SetupDriver' component={SetupDriver} options={{ headerShown: false, }} />
-        <Stack.Screen name='RiderList' component={RiderList} options={{ headerShown: false, }} />
-        <Stack.Screen name='RideInfo-Customer' component={RideInfoC} options={{ headerShown: false, }} />
-        <Stack.Screen name='RideInfo-Driver' component={RideInfoD} options={{ headerShown: false, }} />
+        <Stack.Screen name='Login' component={Login} options={{ headerShown: true, }} />
+        <Stack.Screen name='Main' component={Main} options={{ headerShown: true, }} />
+        <Stack.Screen name='Setup' component={Setup} options={{ headerShown: true, }} />
+        <Stack.Screen name='SetupDriver' component={SetupDriver} options={{ headerShown: true, }} />
+        <Stack.Screen name='RiderList' component={RiderList} options={{ headerShown: true, }} />
+        <Stack.Screen name='RideInfo-Customer' component={RideInfoC} options={{ headerShown: true, }} />
+        <Stack.Screen name='RideInfo-Driver' component={RideInfoD} options={{ headerShown: true, }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -1,11 +1,11 @@
 import React from 'react'
 import { FlatList, SafeAreaView, StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import NavOptions from '../NavOptions/NavOptions';
-import { useNavigation, useRoute} from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
-const renderItem = ({item}) => (
+const renderItem = ({ item }) => (
     <View style={styles.itemContainer}>
-      <Text style={styles.itemText}>{item.driverId}</Text>
+        <Text style={styles.itemText}>{item.driverId}</Text>
     </View>
 );
 
@@ -23,7 +23,7 @@ const RiderList = () => {
                 />
                 <TouchableOpacity
                     onPress={() => navigation.navigate('RideInfo-Customer')}
-                    style={{ ...styles.container }}>
+                    style={{ ...styles.container2 }}>
                     <View>
                         <Text style={styles.text}>Continue</Text>
                     </View>
@@ -38,7 +38,7 @@ export default RiderList;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: 'white', // Set the background color to white
         paddingTop: 20,
     },
     itemContainer: {
@@ -51,4 +51,16 @@ const styles = StyleSheet.create({
     itemText: {
         fontSize: 16,
     },
+    container2: {
+        // backgroundColor: '#fff',
+        zIndex: 999,
+        backgroundColor: 'white',
+        borderRadius: 10,
+        fontWeight: 600,
+        height: 50
+    },
+    text: {
+        paddingLeft: 15,
+        fontSize: 24
+    }
 });
