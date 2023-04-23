@@ -4,7 +4,7 @@ import MapView, { Marker } from 'react-native-maps';
 import tw from 'twrnc';
 import MapViewDirections from 'react-native-maps-directions';
 import { GOOGLE_MAPS_APIKEY } from '@env';
-const Map = () => {
+const Map = ({geoList, numPpl}) => {
     const origin = { latitude: 33.642480, longitude: -117.823980 };
     const destination = { latitude: 33.683020, longitude: -117.841430 };
     const mapRef = useRef(null);
