@@ -3,9 +3,10 @@ import { FlatList, StyleSheet, Button, Text, View, TouchableOpacity, Image } fro
 import React from 'react';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { GOOGLE_MAPS_APIKEY } from "@env";
+import { useNavigation } from '@react-navigation/native';
 
 const TripInfo = () => {
-
+    const navigation = useNavigation();
     return (
         <View style={{ flexDirection: 'column' }}>
             <GooglePlacesAutocomplete
@@ -61,6 +62,14 @@ const TripInfo = () => {
                 debounce={400}
             />
 
+            <TouchableOpacity
+                onPress={() => navigation.navigate('RiderList')}
+                style={{ ...styles.container }}
+            >
+                <View>
+                    <Text style={styles.text}>Continue</Text>
+                </View>
+            </TouchableOpacity>
         </View>
     );
 }

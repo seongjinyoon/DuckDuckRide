@@ -19,14 +19,6 @@ const SetupDriver = () => {
                 />
                 <TripInfo />
                 <Counter />
-                <TouchableOpacity
-                    onPress={() => navigation.navigate('RideInfo-Driver')}
-                    style={{ ...styles.container }}
-                >
-                    <View>
-                        <Text style={styles.text}>Continue</Text>
-                    </View>
-                </TouchableOpacity>
             </View>
 
         </SafeAreaView>
