@@ -6,6 +6,7 @@ import SetupDriver from './components/SetupDriver/SetupDriver';
 import RiderList from './components/RiderList/RiderList';
 import RideInfoC from './components/RideInfo-Customer/RideInfo-Customer';
 import RideInfoD from './components/RideInfo-Driver/RideInfo-Driver';
+import Login from './components/Login/Login';
 // import RideInfoC from './components/RideInfo-Customer/RideRideInfo-Customer';
 // import RideInfoD from './components/RideInfo-Driver/RideRideInfo-Driver';
 import 'react-native-gesture-handler';
@@ -18,6 +19,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen name='Login' component={Login} options={{ headerShown: true, }} />
         <Stack.Screen name='Main' component={Main} options={{ headerShown: true, }} />
         <Stack.Screen name='Setup' component={Setup} options={{ headerShown: true, }} />
         <Stack.Screen name='SetupDriver' component={SetupDriver} options={{ headerShown: true, }} />
