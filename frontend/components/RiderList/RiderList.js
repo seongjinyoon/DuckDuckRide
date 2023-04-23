@@ -1,18 +1,26 @@
-import React from 'react';
-import { SafeAreaView, StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import React from 'react'
+import { FlatList, SafeAreaView, StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import NavOptions from '../NavOptions/NavOptions';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute} from '@react-navigation/native';
 
-const RiderList = ({ route }) => {
-    // const { lat1 } = route.lat1;
-    // const { lon1 } = route.lon1;
-    // const { lat2 } = route.lat2;
-    // const { lon2 } = route.lon2;
+const renderItem = ({item}) => (
+    <View style={styles.itemContainer}>
+      <Text style={styles.itemText}>{item.driverId}</Text>
+    </View>
+);
+
+const RiderList = () => {
+    const route = useRoute();
+    const { riderListData } = route.params;
     const navigation = useNavigation();
     return (
         <SafeAreaView>
             <View style={{ padding: 5 }}>
-                <Text>This is the RiderList page</Text>
+                <FlatList
+                    data={riderListData} // Pass the data array
+                    renderItem={renderItem} // Pass the renderItem function
+                    keyExtractor={(item) => item._id} // Provide a unique key for each item
+                />
                 <TouchableOpacity
                     onPress={() => navigation.navigate('RideInfo-Customer')}
                     style={{ ...styles.container }}>
@@ -28,7 +36,19 @@ const RiderList = ({ route }) => {
 export default RiderList;
 
 const styles = StyleSheet.create({
-    // text: {
-    //     color: 'blue',
-    // },
-})
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+        paddingTop: 20,
+    },
+    itemContainer: {
+        backgroundColor: '#f9c2ff',
+        padding: 20,
+        marginVertical: 8,
+        marginHorizontal: 16,
+        borderRadius: 5,
+    },
+    itemText: {
+        fontSize: 16,
+    },
+});

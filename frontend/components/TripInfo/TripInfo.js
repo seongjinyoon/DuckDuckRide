@@ -30,7 +30,12 @@ const TripInfo = ({role, userId}) => {
                 }
             });
             const json = await response.json();
-            navigation.navigate('RiderList', {riderListData:json})
+            if (json) {
+                navigation.navigate("RiderList", { riderListData: json });
+            } else {
+                console.error("Failed to fetch rider list data");
+            }
+            
         } catch (error){
             console.log(error);
         }
