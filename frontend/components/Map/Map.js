@@ -4,7 +4,9 @@ import MapView, { Marker } from 'react-native-maps';
 import tw from 'twrnc';
 import MapViewDirections from 'react-native-maps-directions';
 import { GOOGLE_MAPS_APIKEY } from '@env';
-const Map = ({geoList, numPpl}) => {
+const Map = ({ geoList, numPpl }) => {
+    console.log(geoList);
+    console.log(numPpl);
     const origin = { latitude: 33.642480, longitude: -117.823980 };
     const destination = { latitude: 33.683020, longitude: -117.841430 };
     const mapRef = useRef(null);
@@ -32,7 +34,8 @@ const Map = ({geoList, numPpl}) => {
                 apikey={GOOGLE_MAPS_APIKEY}
                 strokeWidth={3}
                 strokeColor='black'
-                waypoints={[{ latitude: 33.685910, longitude: -117.824720 }]}
+            // waypoints={[{ latitude: geoList[0][0], longitude: geoList[1][0] }, { latitude: geoList[0][1], longitude: geoList[1][1] }, { latitude: geoList[0][2], longitude: geoList[1][2] }, { latitude: geoList[0][3], longitude: geoList[1][3] }]}
+            // waypoints={[{ latitude: 33.685910, longitude: -117.824720 }]}
             />
 
             <Marker

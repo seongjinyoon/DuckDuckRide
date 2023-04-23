@@ -10,7 +10,7 @@ const RideInfoC = () => {
     const route = useRoute();
     const { selectedItem } = route.params;
     console.log(selectedItem); // null or selected item
-    let geoList = [{}];
+    let geoList = [[], [], [], []];
 
     const queryRideData = async () => {
         try {
@@ -25,7 +25,12 @@ const RideInfoC = () => {
                 }
             });
             const json = await response.json();
-            geoList = [json.stLat, json.stLon, json.enLat, json.enLon];
+            geoList = json.map((item) => {
+                return [item['stLat'], item['stLon'], item['enLat'], item['enLon']];
+            });
+
+
+            console.log(geoList);
             if (!json) {
                 console.error("Failed to fetch rider list data");
             }
