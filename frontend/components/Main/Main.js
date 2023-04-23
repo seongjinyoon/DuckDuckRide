@@ -8,7 +8,7 @@ const Main = () => {
     const { userId } = route.params;
     // console.log(`Main page: ${userId}`);
     return (
-        <SafeAreaView>
+        <SafeAreaView style={styles.container}>
             <View style={{ padding: 5 }}>
                 {/* LOGO */}
                 <Image
@@ -18,16 +18,23 @@ const Main = () => {
                     }
                 />
                 {/* RIDE OPTIONS */}
-                <NavOptions userId={userId}/>
+                <NavOptions userId={userId} />
             </View>
+            <Image
+                style={{ height: '100%', width: '100%', resizeMode: 'contain', flex: 1, justifyContent: 'center', alignContent: 'center' }}
+                source={
+                    require('../../assets/background.png')
+                }
+            />
         </SafeAreaView>
     )
 }
 
-export default Main;
-
 const styles = StyleSheet.create({
-    // text: {
-    //     color: 'blue',
-    // },
-})
+    container: {
+        flex: 1,
+        backgroundColor: '#fff'
+    }
+});
+
+export default Main;

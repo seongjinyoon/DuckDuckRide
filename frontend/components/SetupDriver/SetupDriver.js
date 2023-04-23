@@ -12,8 +12,8 @@ const SetupDriver = () => {
     const { userId } = route.params;
     const navigation = useNavigation();
     return (
-        <SafeAreaView>
-            <View style={{ padding: 5 }}>
+        <SafeAreaView style={styles.container}>
+            <View>
                 <Image
                     style={{ height: 50, width: 50, resizeMode: 'contain' }}
                     source={
@@ -23,7 +23,12 @@ const SetupDriver = () => {
                 <TripInfo role='driver' userId={userId} />
                 <Counter />
             </View>
-
+            <Image
+                style={{ height: '100%', width: '100%', resizeMode: 'contain', flex: 1, justifyContent: 'center', alignContent: 'center' }}
+                source={
+                    require('../../assets/background.png')
+                }
+            />
         </SafeAreaView>
     )
 }
@@ -31,7 +36,9 @@ const SetupDriver = () => {
 export default SetupDriver;
 
 const styles = StyleSheet.create({
-    // text: {
-    //     color: 'blue',
-    // },
-})
+    container: {
+        flex: 1,
+        // padding: 5,
+        backgroundColor: '#fff', // add this to set the background color to white
+    },
+});

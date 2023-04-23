@@ -1,46 +1,80 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import { StyleSheet, View, TouchableOpacity, Text, Image } from 'react-native';
 
-const OptionCard = ({ title, icon1, icon2, icon3, onPress }) => {
+const Card = () => {
     return (
-        <TouchableOpacity style={styles.container} onPress={onPress}>
-            <View style={styles.titleContainer}>
-                <Text style={styles.title}>{title}</Text>
+        <View>
+            <Text style={styles.txt}>24.7 miles / $19.00</Text>
+            <View style={styles.container}>
+                <View style={styles.buttonContainer}>
+                    <TouchableOpacity style={styles.button}>
+                        <Image source={require('../../assets/one.png')} style={styles.image} />
+                        <Text>Driver</Text>
+                    </TouchableOpacity>
+                    <View style={styles.spacer} />
+                    <TouchableOpacity style={styles.button}>
+                        <Image source={require('../../assets/two.png')} style={styles.image} />
+                        <Text>Vehicle</Text>
+                    </TouchableOpacity>
+                    <View style={styles.spacer} />
+                    <TouchableOpacity style={styles.button}>
+                        <Text>3/4</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
-            <View style={styles.iconContainer}>
-                <Icon name={icon1} size={30} style={styles.icon} />
-                <Icon name={icon2} size={30} style={styles.icon} />
-                <Icon name={icon3} size={30} style={styles.icon} />
-            </View>
-        </TouchableOpacity>
+        </View>
     );
 };
 
 const styles = StyleSheet.create({
-    container: {
-        backgroundColor: '#fff',
-        justifyContent: 'flex-end',
-        flex: 1,
-        borderRadius: 10,
+    txt: {
         padding: 20,
-        margin: 10,
-        elevation: 5,
+        textAlign: 'center',
+        // justifyContent: 'center',
+        // alignItems: 'center',
+        // flexDirection: 'row',
     },
-    titleContainer: {
-        marginBottom: 10,
+    container: {
+        // flex: 1,
+        // justifyContent: 'flex-end',
+        alignItems: 'center',
+        marginBottom: 20,
+        marginTop: '50%',
+        fontWeight: 600,
     },
-    title: {
-        fontSize: 20,
-        fontWeight: 'bold',
-    },
-    iconContainer: {
+    buttonContainer: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flex: 1,
+        // paddingBottom: '50%',
+        // marginBottom: '50%',
+        // marginBottom: 50,
     },
-    icon: {
-        color: '#000',
+    button: {
+        width: 100,
+        height: 100,
+        borderRadius: 50,
+        backgroundColor: 'white',
+        borderColor: 'white',
+        // backgroundColor: '#ded6d5',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderWidth: 1,
+        // borderColor: '#bab0af',
+    },
+    spacer: {
+        width: 40,
+    },
+    image: {
+        width: 100,
+        height: 100,
+        borderRadius: 50,
+        // resizeMode: 'contain',
+        // width: 50,
+        // height: 50,
+        marginBottom: 5,
     },
 });
 
-export default OptionCard;
+export default Card;

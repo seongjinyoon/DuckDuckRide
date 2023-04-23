@@ -9,7 +9,7 @@ const Setup = () => {
     const route = useRoute();
     const { userId } = route.params;
     return (
-        <SafeAreaView>
+        <SafeAreaView style={styles.container}>
             <View style={{ padding: 5 }}>
                 <Image
                     style={{ height: 50, width: 50, resizeMode: 'contain' }}
@@ -17,18 +17,24 @@ const Setup = () => {
                         require('../../assets/logo.jpeg')
                     }
                 />
-                <TripInfo role='passenger' userId={userId}/>
+                <TripInfo role='passenger' userId={userId} />
 
             </View>
-
+            <Image
+                style={{ height: '100%', width: '100%', resizeMode: 'contain', flex: 1, justifyContent: 'center', alignContent: 'center' }}
+                source={
+                    require('../../assets/background.png')
+                }
+            />
         </SafeAreaView>
     )
 }
 
-export default Setup;
-
 const styles = StyleSheet.create({
-    // text: {
-    //     color: 'blue',
-    // },
-})
+    container: {
+        flex: 1,
+        backgroundColor: '#fff'
+    }
+});
+
+export default Setup;

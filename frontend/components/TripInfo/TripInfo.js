@@ -12,16 +12,34 @@ const TripInfo = ({role, userId}) => {
     const [endData, setEndData] = useState(null);
 
     const navigation = useNavigation();
+    const requestRiderListInfo = async () => {
+        try{
+            const queryParams = new URLSearchParams({
+                findstart:true,
+                stLat:startData.stLat,
+                stLon:startData.stLon,
+                enLat:endData.enLat,
+                enLon:endData.enLon,
+                near:10
+            });
 
-    // useEffect(()=>{
-    //     requestInfo();
-    // },[]);
-    // const requestInfo = async () => {
-    //     const response = await fetch('http://localhost:8000/api/user',{
-    //         method: ''
-
-    //     });
-    // }
+            const response = await fetch(`http://localhost:8000/api/ride?${queryParams.toString()}`,{
+                method: 'GET',
+                headers:{
+                    'Content-Type': 'application/json',
+                }
+            });
+            const json = await response.json();
+            if (json) {
+                navigation.navigate("RiderList", { riderListData: json, stAddr: startData.stAddr, enAddr: endData.enAddr });
+            } else {
+                console.error("Failed to fetch rider list data");
+            }
+            
+        } catch (error){
+            console.log(error);
+        }
+    }
 
     const createRide = async () => {
         try {
@@ -41,6 +59,7 @@ const TripInfo = ({role, userId}) => {
             const json = await response.json();
             if (json){
               if (!json.ok) console.error('Server Error!');
+              else navigation.navigate("RideInfo-Customer", {selectedItem:null});
             }
             else {
               console.error('Empty response body');
@@ -93,7 +112,8 @@ const TripInfo = ({role, userId}) => {
                 onPress={(data, details = null) => {
                     setStartData({
                         stLat: details.geometry.location.lat,
-                        stLon: details.geometry.location.lng
+                        stLon: details.geometry.location.lng,
+                        stAddr: data.description
                     });
                 }}
                 fetchDetails={true}
@@ -119,9 +139,11 @@ const TripInfo = ({role, userId}) => {
                     }
                 }}
                 onPress={(data, details = null) => {
+                    
                     setEndData({
                         enLat: details.geometry.location.lat,
                         enLon: details.geometry.location.lng,
+                        enAddr: data.description
                     });
                 }}
                 fetchDetails={true}
@@ -139,8 +161,11 @@ const TripInfo = ({role, userId}) => {
             <TouchableOpacity
                 onPress={async () =>{
                     if (role === 'driver') await createRide();
-                    else if (role === 'passenger') await addRide();
-                    navigation.navigate('RiderList')
+                    else if (role === 'passenger'){
+                        await addRide();
+                        await requestRiderListInfo();
+                    }
+                    
                 }}
                 style={{ ...styles.container }}
             >
