@@ -1,11 +1,11 @@
 import { FlatList, StyleSheet, Button, Text, View, TouchableOpacity, Image } from 'react-native';
 
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { GOOGLE_MAPS_APIKEY } from "@env";
 import { useNavigation } from '@react-navigation/native';
 
-const TripInfo = ({role, userId}) => {
+const TripInfo = ({ role, userId }) => {
 
     // const [userId, setUserId] = useState(null);
     const [startData, setStartData] = useState(null);
@@ -13,19 +13,19 @@ const TripInfo = ({role, userId}) => {
 
     const navigation = useNavigation();
     const requestRiderListInfo = async () => {
-        try{
+        try {
             const queryParams = new URLSearchParams({
-                findstart:true,
-                stLat:startData.stLat,
-                stLon:startData.stLon,
-                enLat:endData.enLat,
-                enLon:endData.enLon,
-                near:10
+                findstart: true,
+                stLat: startData.stLat,
+                stLon: startData.stLon,
+                enLat: endData.enLat,
+                enLon: endData.enLon,
+                near: 10
             });
 
-            const response = await fetch(`http://localhost:8000/api/ride?${queryParams.toString()}`,{
+            const response = await fetch(`http://localhost:8000/api/ride?${queryParams.toString()}`, {
                 method: 'GET',
-                headers:{
+                headers: {
                     'Content-Type': 'application/json',
                 }
             });
@@ -35,34 +35,34 @@ const TripInfo = ({role, userId}) => {
             } else {
                 console.error("Failed to fetch rider list data");
             }
-            
-        } catch (error){
+
+        } catch (error) {
             console.log(error);
         }
     }
 
     const createRide = async () => {
         try {
-            const response = await fetch('http://127.0.0.1:8000/api/ride',{
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({
-                driverId: userId,
-                passengersId: [],
-                ...startData,
-                ...endData,
-              }),
+            const response = await fetch('http://127.0.0.1:8000/api/ride', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    driverId: userId,
+                    passengersId: [],
+                    ...startData,
+                    ...endData,
+                }),
             });
 
             const json = await response.json();
-            if (json){
-              if (!json.ok) console.error('Server Error!');
-              else navigation.navigate("RideInfo-Customer", {selectedItem:null});
+            if (json) {
+                if (!json.ok) console.error('Server Error!');
+                else navigation.navigate("RideInfo-Driver", { selectedItem: null });
             }
             else {
-              console.error('Empty response body');
+                console.error('Empty response body');
             }
         } catch (error) {
             console.error(error);
@@ -70,28 +70,28 @@ const TripInfo = ({role, userId}) => {
     }
 
     const addRide = async () => {
-        try{
-            const response = await fetch('http://127.0.0.1:8000/api/ride',{
+        try {
+            const response = await fetch('http://127.0.0.1:8000/api/ride', {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body:JSON.stringify({
+                body: JSON.stringify({
                     id: userId,
                     passengersId: [],
                     ...startData,
                     ...endData,
-                }), 
+                }),
             });
             const json = await response.json();
-            if (json){
-              if (!json.ok) console.error('Server Error!');
+            if (json) {
+                if (!json.ok) console.error('Server Error!');
             }
             else {
-              console.error('Empty response body');
+                console.error('Empty response body');
             }
         }
-        catch (error){
+        catch (error) {
             console.error(error);
         }
     }
@@ -139,7 +139,7 @@ const TripInfo = ({role, userId}) => {
                     }
                 }}
                 onPress={(data, details = null) => {
-                    
+
                     setEndData({
                         enLat: details.geometry.location.lat,
                         enLon: details.geometry.location.lng,
@@ -159,13 +159,13 @@ const TripInfo = ({role, userId}) => {
             />
 
             <TouchableOpacity
-                onPress={async () =>{
+                onPress={async () => {
                     if (role === 'driver') await createRide();
-                    else if (role === 'passenger'){
+                    else if (role === 'passenger') {
                         await addRide();
                         await requestRiderListInfo();
                     }
-                    
+
                 }}
                 style={{ ...styles.container }}
             >

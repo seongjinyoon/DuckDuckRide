@@ -10,38 +10,38 @@ const RideInfoC = () => {
     const route = useRoute();
     const { selectedItem } = route.params;
     console.log(selectedItem); // null or selected item
-    let geoList = [];
+    let geoList = [{}];
 
-    const queryRideData = async ()=>{
+    const queryRideData = async () => {
         try {
             const queryParams = new URLSearchParams({
-                ridedistance:true,
-                id:selectedItem._id,
+                ridedistance: true,
+                id: selectedItem._id,
             });
-            const response = await fetch(`http://localhost:8000/api/ride?${queryParams.toString()}`,{
+            const response = await fetch(`http://localhost:8000/api/ride?${queryParams.toString()}`, {
                 method: 'GET',
-                headers:{
+                headers: {
                     'Content-Type': 'application/json',
                 }
             });
             const json = await response.json();
             geoList = [json.stLat, json.stLon, json.enLat, json.enLon];
-            if (!json){
+            if (!json) {
                 console.error("Failed to fetch rider list data");
             }
-        } catch (error){
+        } catch (error) {
             console.log(error);
         }
     };
 
-    if (selectedItem) queryRideData(); 
+    if (selectedItem) queryRideData();
 
     return (
         <SafeAreaView>
             <View style={styles.container}>
                 {/* <Text>This is the RideInfo-Customer page</Text> */}
                 <View style={tw`h-1/2`}>
-                    <Map geoList={geoList} numPpl={geoList[0].length}/>
+                    <Map geoList={geoList} numPpl={geoList[0].length} />
                 </View >
                 <View style={tw`h-1/2`}>
                     <Card />

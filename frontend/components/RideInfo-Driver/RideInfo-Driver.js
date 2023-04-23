@@ -2,7 +2,7 @@ import React from 'react';
 import { useRoute } from '@react-navigation/native';
 import { SafeAreaView, StyleSheet, Text, View, Image } from 'react-native';
 import Map from '../Map/Map';
-import Card from '../Card/Card';
+import Card2 from '../Card2/Card2';
 import MapView, { Marker } from 'react-native-maps';
 import tw from 'twrnc';
 
@@ -18,7 +18,7 @@ const RideInfoD = () => {
                     <Map />
                 </View >
                 <View style={tw`h-1/2`}>
-                    <Card />
+                    <Card2 />
                 </View>
 
                 {/* <View style={styles.container}> </View> */}
