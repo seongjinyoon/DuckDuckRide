@@ -44,8 +44,38 @@ router.get("/",async (req,res)=>{
             res.send([0.000621371 * geolib.getDistance(start,end)])
         }
     }
-    else if(req.query.findstart===true){
 
+    else if(req.query.findstart==="true"){
+        let data = await RideModel.find()
+        let dataList = []
+        let {stLat,stLon,enLat,enLon,near} = req.query
+        let usrStart = {
+            latitude: parseFloat(stLat),
+            longitude: parseFloat(stLon)
+        }
+        let usrEnd = {
+            latitude: parseFloat(enLat),
+            longitude: parseFloat(enLon)
+        }
+
+        for(let i=0; i<data.length; i++){
+            let start = {
+                latitude: parseFloat(data[i].stLat[0]),
+                longitude: parseFloat(data[i].stLon[0])
+            }
+            let end = {
+                latitude: parseFloat(data[i].enLat[0]),
+                longitude: parseFloat(data[i].enLon[0])
+            }
+            startDis = 0.000621371 * geolib.getDistance(start,usrStart)
+            endDis = 0.000621371 * geolib.getDistance(end,usrEnd)
+            console.log(startDis, endDis)
+            if(startDis < parseFloat(near) && endDis < parseFloat(near)){
+                dataList.push(data[i])
+            }
+        }
+        console.log(dataList)
+        res.send(dataList)
     }
     else if(req.query.sort===true){
 
